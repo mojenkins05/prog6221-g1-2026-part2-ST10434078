@@ -64,7 +64,7 @@ namespace POEProg6221.GUI
 
             // Set audio file path - adjust as needed
             string audioPath = System.IO.Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory, "VoiceGreeting.wav");
+     AppDomain.CurrentDomain.BaseDirectory, "Assets", "VoiceGreeting.wav");
             _audioService = new AudioService(audioPath);
         }
 
