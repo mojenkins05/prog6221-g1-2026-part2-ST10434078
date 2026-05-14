@@ -12,4 +12,9 @@
     <Folder Include="Assests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.3.0" />
+    <PackageReference Include="Uno.UI" Version="5.6.99" />
+  </ItemGroup>
+
 </Project>
