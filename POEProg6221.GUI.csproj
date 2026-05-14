@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="NAudio" Version="2.3.0" />
+    <PackageReference Include="System.Speech" Version="10.0.8" />
     <PackageReference Include="Uno.UI" Version="5.6.99" />
   </ItemGroup>
 
