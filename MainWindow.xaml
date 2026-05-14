@@ -27,19 +27,31 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- ASCII Art Logo -->
-                <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                    <TextBlock x:Name="AsciiArtBlock"
-                               FontFamily="Consolas"
-                               FontSize="11"
-                               Foreground="#00D4AA"
-                               TextWrapping="Wrap"
-                               Text="╔══════════════════════════════════════════╗&#x0a;║    ░ WOOPPAA AWARENESS BOT ░             ║&#x0a;║    🔒 CYBERSECURITY CHATBOT 🔒           ║&#x0a;╚══════════════════════════════════════════╝"/>
-                    <TextBlock x:Name="WelcomeText"
-                               FontSize="14"
-                               Foreground="#E0E0E0"
-                               Margin="0,5,0,0"
-                               Text="Welcome! Enter your name to get started."/>
-                </StackPanel>
+                <TextBlock x:Name="AsciiArtBlock"
+           FontFamily="Consolas"
+           FontSize="9"
+           Foreground="#00D4AA"
+           TextWrapping="Wrap"
+           LineHeight="12"
+           Text="    ██╗    ██╗ ██████╗  ██████╗ ██████╗ █████╗  █████╗     ██████╗  ██████╗ ████████╗
+    ██║    ██║██╔═══██╗██╔═══██╗██╔══██╗██╔══██╗██╔══██╗    ██╔══██╗██╔═══██╗╚══██╔══╝
+    ██║ █╗ ██║██║   ██║██║   ██║██████╔╝███████║███████║    ██████╔╝██║   ██║   ██║   
+    ██║███╗██║██║   ██║██║   ██║██╔═══╝ ██╔══██║██╔══██║    ██╔══██╗██║   ██║   ██║   
+    ╚███╔███╔╝╚██████╔╝╚██████╔╝██║     ██║  ██║██║  ██║    ██████╔╝╚██████╔╝   ██║   
+     ╚══╝╚══╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   
+╔══════════════════════════════════════════════════════════════════════════════════╗
+║  [SYSTEM: ONLINE] [SECURITY: MAXIMUM] [ENCRYPTION: AES-256] [FIREWALL: ACTIVE]   ║
+║                                                                                  ║
+║                      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                          ║
+║                     █  SECURITY PROTOCOLS ACTIVE   █                         ║
+║                     █  • Password Protection        █                         ║
+║                     █  • Phishing Detection         █                         ║
+║                     █  • Privacy Shield             █                         ║
+║                     █  • Malware Defense            █                         ║
+║                      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                          ║
+║                                                                                  ║
+║              'Protecting your digital footprint since 2025'                      ║
+╚══════════════════════════════════════════════════════════════════════════════════╝"/>
 
                 <!-- Voice Toggle and Status -->
                 <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
