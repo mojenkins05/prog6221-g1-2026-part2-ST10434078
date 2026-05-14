@@ -18,72 +18,94 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- HEADER / ASCII ART SECTION -->
+        <!-- HEADER / ASCII ART SECTION (Row 0) -->
         <Border Grid.Row="0" Background="#0F3460" Padding="15" CornerRadius="0,0,15,15">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                <!-- ASCII Art Logo -->
-                <TextBlock x:Name="AsciiArtBlock"
-           FontFamily="Consolas"
-           FontSize="9"
-           Foreground="#00D4AA"
-           TextWrapping="Wrap"
-           LineHeight="12"
-           Text="    ██╗    ██╗ ██████╗  ██████╗ ██████╗ █████╗  █████╗     ██████╗  ██████╗ ████████╗
-    ██║    ██║██╔═══██╗██╔═══██╗██╔══██╗██╔══██╗██╔══██╗    ██╔══██╗██╔═══██╗╚══██╔══╝
-    ██║ █╗ ██║██║   ██║██║   ██║██████╔╝███████║███████║    ██████╔╝██║   ██║   ██║   
-    ██║███╗██║██║   ██║██║   ██║██╔═══╝ ██╔══██║██╔══██║    ██╔══██╗██║   ██║   ██║   
-    ╚███╔███╔╝╚██████╔╝╚██████╔╝██║     ██║  ██║██║  ██║    ██████╔╝╚██████╔╝   ██║   
-     ╚══╝╚══╝  ╚═════╝  ╚═════╝ ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝  ╚═════╝    ╚═╝   
-╔══════════════════════════════════════════════════════════════════════════════════╗
-║  [SYSTEM: ONLINE] [SECURITY: MAXIMUM] [ENCRYPTION: AES-256] [FIREWALL: ACTIVE]   ║
-║                                                                                  ║
-║                      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                          ║
-║                     █  SECURITY PROTOCOLS ACTIVE   █                         ║
-║                     █  • Password Protection        █                         ║
-║                     █  • Phishing Detection         █                         ║
-║                     █  • Privacy Shield             █                         ║
-║                     █  • Malware Defense            █                         ║
-║                      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀                          ║
-║                                                                                  ║
-║              'Protecting your digital footprint since 2025'                      ║
-╚══════════════════════════════════════════════════════════════════════════════════╝"/>
+                <!-- ROW 0: Top section with ASCII Art and Voice Toggle -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-                <!-- Voice Toggle and Status -->
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                        <TextBlock Text="🔊 Voice: " Foreground="White" FontSize="12" VerticalAlignment="Center"/>
-                        <CheckBox x:Name="VoiceToggle"
-                                  IsChecked="True"
-                                  Foreground="White"
-                                  VerticalAlignment="Center"
-                                  Checked="VoiceToggle_Changed"
-                                  Unchecked="VoiceToggle_Changed"/>
-                        <TextBlock x:Name="VoiceStatusText"
-                                   Text="ON" Foreground="#00D4AA"
-                                   FontSize="12" FontWeight="Bold"
-                                   VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <!-- ASCII Art Logo -->
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock x:Name="AsciiArtBlock"
+                                   FontFamily="Consolas"
+                                   FontSize="11"
+                                   Foreground="#00D4AA"
+                                   Text="╔══════════════════════════════════════════╗&#x0a;║    ░ WOOPPAA AWARENESS BOT ░             ║&#x0a;║    🔒 CYBERSECURITY CHATBOT 🔒           ║&#x0a;╚══════════════════════════════════════════╝"
+                                   TextWrapping="Wrap"/>
+                        <TextBlock x:Name="WelcomeText"
+                                   FontSize="14"
+                                   Foreground="#E0E0E0"
+                                   Margin="0,5,0,0"
+                                   Text="Welcome! Enter your name to get started."/>
                     </StackPanel>
-                    <TextBlock x:Name="SentimentIndicator"
-                               FontSize="12"
-                               Foreground="#FFD700"
-                               Text="Mood: 😊 Neutral"
-                               HorizontalAlignment="Right"/>
-                    <TextBlock x:Name="MemoryIndicator"
-                               FontSize="11"
-                               Foreground="#B0B0B0"
-                               Text="Topics discussed: 0"
-                               HorizontalAlignment="Right"
-                               Margin="0,3,0,0"/>
+
+                    <!-- Voice Toggle and Indicators -->
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0,0,0">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                            <TextBlock Text="🔊 Voice: " Foreground="White" FontSize="12" VerticalAlignment="Center"/>
+                            <CheckBox x:Name="VoiceToggle"
+                                      Foreground="White"
+                                      VerticalAlignment="Center"
+                                      Checked="VoiceToggle_Changed"
+                                      Unchecked="VoiceToggle_Changed"/>
+                            <TextBlock x:Name="VoiceStatusText"
+                                       Text="ON" 
+                                       Foreground="#00D4AA"
+                                       FontSize="12" 
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center" 
+                                       Margin="5,0,0,0"/>
+                        </StackPanel>
+                        <TextBlock x:Name="SentimentIndicator"
+                                   FontSize="12"
+                                   Foreground="#FFD700"
+                                   Text="Mood: 😊 Neutral"
+                                   HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="MemoryIndicator"
+                                   FontSize="11"
+                                   Foreground="#B0B0B0"
+                                   Text="Topics discussed: 0"
+                                   HorizontalAlignment="Right"
+                                   Margin="0,3,0,0"/>
+                    </StackPanel>
+                </Grid>
+
+                <!-- ROW 1: Welcome message and security banner BELOW ASCII -->
+                <StackPanel Grid.Row="1" Margin="0,10,0,0">
+                    <Border Background="#1A1A2E" CornerRadius="5" Padding="10,5" HorizontalAlignment="Stretch">
+                        <StackPanel>
+                            <TextBlock Text="🔒 CYBERSECURITY AWARENESS BOT v2.0" 
+                                       Foreground="#FFD700" 
+                                       FontSize="13" 
+                                       FontWeight="Bold"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="[ SYSTEM: ONLINE ]   [ ENCRYPTION: ACTIVE ]   [ FIREWALL: PROTECTED ]" 
+                                       Foreground="#00D4AA" 
+                                       FontSize="11" 
+                                       HorizontalAlignment="Center"
+                                       Margin="0,3,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <TextBlock x:Name="WelcomeText2"
+                               FontSize="14"
+                               Foreground="#E0E0E0"
+                               Margin="0,8,0,0"
+                               HorizontalAlignment="Center"
+                               Text="Welcome! Enter your name below to get started."/>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <!-- QUICK TOPIC BUTTONS -->
+        <!-- QUICK TOPIC BUTTONS (Row 1) -->
         <Border Grid.Row="1" Background="#16213E" Padding="8" Margin="0,2,0,0">
             <StackPanel>
                 <TextBlock Text="📋 Quick Topics:" Foreground="#B0B0B0" FontSize="12" Margin="5,0,0,5"/>
@@ -122,14 +144,14 @@
             </StackPanel>
         </Border>
 
-        <!-- CHAT DISPLAY AREA -->
+        <!-- CHAT DISPLAY AREA (Row 2) -->
         <Border Grid.Row="2" Margin="10" CornerRadius="10" Background="#16213E" BorderBrush="#0F3460" BorderThickness="1">
             <ScrollViewer x:Name="ChatScrollViewer" VerticalScrollBarVisibility="Auto" Padding="10">
                 <StackPanel x:Name="ChatPanel" VerticalAlignment="Bottom"/>
             </ScrollViewer>
         </Border>
 
-        <!-- NAME INPUT PANEL (shown initially) -->
+        <!-- NAME INPUT PANEL (Row 3) -->
         <Border x:Name="NameInputPanel" Grid.Row="3" Margin="10,0,10,5" Padding="10" Background="#16213E" CornerRadius="10" Visibility="Visible">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="👤 Enter your name: " Foreground="#00D4AA" FontSize="14" VerticalAlignment="Center" Margin="0,0,10,0"/>
@@ -154,7 +176,7 @@
             </StackPanel>
         </Border>
 
-        <!-- MESSAGE INPUT PANEL (shown after name entry) -->
+        <!-- MESSAGE INPUT PANEL (Row 3) -->
         <Border x:Name="MessageInputPanel" Grid.Row="3" Margin="10,0,10,5" Padding="10" Background="#16213E" CornerRadius="10" Visibility="Collapsed">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -195,7 +217,7 @@
             </Grid>
         </Border>
 
-        <!-- STATUS BAR -->
+        <!-- STATUS BAR (Row 4) -->
         <Border Grid.Row="4" Background="#0F3460" Padding="8,5">
             <Grid>
                 <Grid.ColumnDefinitions>

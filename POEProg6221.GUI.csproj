@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assests\VoiceGreeting %281%29.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assests\VoiceGreeting (1).wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="NAudio" Version="2.3.0" />
     <PackageReference Include="System.Speech" Version="10.0.8" />
     <PackageReference Include="Uno.UI" Version="5.6.99" />

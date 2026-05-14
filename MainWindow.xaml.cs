@@ -41,6 +41,8 @@ namespace POEProg6221.GUI
         public MainWindow()
         {
             InitializeComponent();
+            VoiceToggle.Checked += VoiceToggle_Changed;
+            VoiceToggle.Unchecked += VoiceToggle_Changed;
             InitialiseServices();
             InitialiseDelegates();
             _chatHistory = new List<ChatMessage>();
@@ -118,12 +120,40 @@ namespace POEProg6221.GUI
             // Focus the name input
             NameInput.Focus();
 
+            // Show that we're attempting to play audio
+            StatusText.Text = "🔊 Loading welcome audio...";
+
             // Try to play welcome audio
-            if (_audioService.AudioFileExists())
+            bool audioExists = _audioService.AudioFileExists();
+
+            if (audioExists)
             {
                 StatusText.Text = "🔊 Playing welcome audio...";
-                await _audioService.PlayWelcomeAudioAsync();
-                StatusText.Text = "💡 Type 'help' for topics | 'quit' to exit | 'wooppaa' for fun!";
+                bool played = await _audioService.PlayWelcomeAudioAsync();
+
+                if (played)
+                {
+                    StatusText.Text = "💡 Type 'help' for topics | 'quit' to exit | 'wooppaa' for fun!";
+                }
+                else
+                {
+                    StatusText.Text = "⚠️ Audio could not play. Type 'help' for topics!";
+                }
+            }
+            else
+            {
+                StatusText.Text = "⚠️ VoiceGreeting.wav not found. Type 'help' for topics!";
+
+                // Show a helpful message in chat
+                MessageBox.Show(
+                    "VoiceGreeting.wav not found!\n\n" +
+                    "Please ensure the file is in your project and set to:\n" +
+                    "• Build Action: Content\n" +
+                    "• Copy to Output Directory: Copy if newer\n\n" +
+                    $"Looking in: {AppDomain.CurrentDomain.BaseDirectory}",
+                    "Audio File Missing",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
             }
         }
 
@@ -529,6 +559,10 @@ namespace POEProg6221.GUI
 
         private void VoiceToggle_Changed(object sender, RoutedEventArgs e)
         {
+            // Null check - the event fires during initialization before controls are loaded
+            if (VoiceStatusText == null || _speechService == null)
+                return;
+
             if (VoiceToggle.IsChecked == true)
             {
                 VoiceStatusText.Text = "ON";

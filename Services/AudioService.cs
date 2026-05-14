@@ -5,32 +5,49 @@ using NAudio.Wave;
 
 namespace POEProg6221.GUI.Services
 {
-    /// Handles audio file playback for the welcome greeting.
-
     public class AudioService
     {
-        private readonly string _audioFilePath;
+        private string _audioFilePath;
 
         public AudioService(string audioFilePath)
         {
             _audioFilePath = audioFilePath;
         }
 
-        /// Plays the welcome audio file asynchronously.
-        /// Returns true if played successfully, false otherwise.
- 
         public async Task<bool> PlayWelcomeAudioAsync()
         {
             try
             {
-                if (!File.Exists(_audioFilePath))
+                // Try multiple possible paths
+                string[] possiblePaths = {
+                    _audioFilePath,
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "VoiceGreeting.wav"),
+                    Path.Combine(Directory.GetCurrentDirectory(), "VoiceGreeting.wav"),
+                    Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "VoiceGreeting.wav"),
+                    @"C:\Users\muham\source\repos\prog6221-g1-2026-part1-mojenkins05\POEProg6221\VoiceGreeting.wav"
+                };
+
+                string foundPath = null;
+                foreach (string path in possiblePaths)
                 {
+                    if (File.Exists(path))
+                    {
+                        foundPath = path;
+                        System.Diagnostics.Debug.WriteLine($"✅ Found audio at: {path}");
+                        break;
+                    }
+                }
+
+                if (foundPath == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("❌ VoiceGreeting.wav NOT FOUND in any location!");
+                    System.Diagnostics.Debug.WriteLine($"Base Directory: {AppDomain.CurrentDomain.BaseDirectory}");
                     return false;
                 }
 
                 await Task.Run(() =>
                 {
-                    using (var audioFile = new AudioFileReader(_audioFilePath))
+                    using (var audioFile = new AudioFileReader(foundPath))
                     using (var outputDevice = new WaveOutEvent())
                     {
                         outputDevice.Init(audioFile);
@@ -44,17 +61,28 @@ namespace POEProg6221.GUI.Services
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"❌ Audio Error: {ex.Message}");
                 return false;
             }
         }
 
-        /// Checks if the audio file exists.
-
         public bool AudioFileExists()
         {
-            return File.Exists(_audioFilePath);
+            // Check multiple locations
+            string[] possiblePaths = {
+                _audioFilePath,
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "VoiceGreeting.wav"),
+                Path.Combine(Directory.GetCurrentDirectory(), "VoiceGreeting.wav"),
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "VoiceGreeting.wav")
+            };
+
+            foreach (string path in possiblePaths)
+            {
+                if (File.Exists(path)) return true;
+            }
+            return false;
         }
     }
 }
