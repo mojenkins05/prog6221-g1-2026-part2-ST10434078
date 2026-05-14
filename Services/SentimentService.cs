@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace POEProg6221.GUI.Services
-{
+{ /// <summary>
+/// SentimentService implements simple keyword-based sentiment analysis 
+/// (worried, curious, frustrated, happy, overwhelmed). 
+/// The service adjusts responses to be more empathetic, improving 
+/// user engagement as discussed in conversational agent design 
+/// (Addison, 2022; Russell and Norvig, 2021).
+/// </summary>
 
     /// Detects user sentiment from input text and provides appropriate emotional responses.
 
     public class SentimentService
-    {
+    {/// <summary>
+     /// Detects the sentiment of the user input based on predefined keyword lists.
+     /// Returns the sentiment category or "neutral" if none detected.
+     /// </summary>
+     /// <param name="input">The raw text input from the user.</param>
+     /// <returns>A string representing the detected sentiment.</returns>
         // Dictionary mapping sentiment categories to their trigger words
         private readonly Dictionary<string, List<string>> _sentimentKeywords;
 

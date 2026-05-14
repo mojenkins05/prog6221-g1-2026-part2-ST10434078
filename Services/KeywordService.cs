@@ -10,6 +10,12 @@ namespace POEProg6221.GUI.Services
 
     public class KeywordService
     {
+        /// <summary>
+        /// KeywordService maps cybersecurity-related keywords to topics using 
+        /// a Dictionary collection. This enables accurate topic identification 
+        /// and satisfies the Keyword Recognition requirement of the POE.
+        /// </summary>
+        
         // Dictionary mapping topic names to their associated keywords
         private readonly Dictionary<string, List<string>> _topicKeywords;
 

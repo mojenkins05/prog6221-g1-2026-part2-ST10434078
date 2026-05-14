@@ -24,7 +24,7 @@ namespace POEProg6221.GUI.Services
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "VoiceGreeting.wav"),
                     Path.Combine(Directory.GetCurrentDirectory(), "VoiceGreeting.wav"),
                     Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "VoiceGreeting.wav"),
-                    @"C:\Users\muham\source\repos\prog6221-g1-2026-part1-mojenkins05\POEProg6221\VoiceGreeting.wav"
+                    "C:\\Users\\muham\\source\\repos\\POEProg6221.GUI\\VoiceGreeting.wav"
                 };
 
                 string foundPath = null;

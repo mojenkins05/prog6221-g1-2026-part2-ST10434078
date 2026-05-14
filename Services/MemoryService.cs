@@ -8,6 +8,12 @@ namespace POEProg6221.GUI.Services
 
     public class MemoryService
     {
+        /// <summary>
+        /// MemoryService maintains user state including name, favourite topic, 
+        /// conversation history and interaction counts. 
+        /// This implements the "Memory and Recall" requirement and allows 
+        /// for personalised responses later in the conversation (Nugroho, 2021).
+        /// </summary>
         private readonly UserMemory _memory;
         private readonly Random _random;
 

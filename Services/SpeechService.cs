@@ -4,8 +4,11 @@ using System.Speech.Synthesis;
 namespace POEProg6221.GUI.Services
 {
     /// <summary>
-    /// Manages text-to-speech functionality for the chatbot.
+    /// SpeechService provides text-to-speech functionality using 
+    /// System.Speech.Synthesis. This fulfills the voice implementation 
+    /// requirement carried over from Part 1 (Microsoft, 2024a).
     /// </summary>
+    
     public class SpeechService
     {
         private readonly SpeechSynthesizer _synth;

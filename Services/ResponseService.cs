@@ -5,12 +5,20 @@ using System.Linq;
 namespace POEProg6221.GUI.Services
 {
 
+    /// <summary>
+    /// Manages response generation with random selection for varied interactions.
+    /// Cybersecurity advice regarding passwords is based on NIST guidelines (NIST, 2020).
+    /// Phishing detection tips are adapted from CISA recommendations (CISA, 2023).
+    /// ResponseService uses Dictionary<string, List<string>> to organise 
+    /// multiple responses per topic. Random selection is implemented to 
+    /// meet the "Random Responses" requirement and keep interactions 
+    /// varied and engaging (Troelsen and Japikse, 2022).
+    /// </summary>
 
-    ///Manages response generation with random selection for varied interactions.
-    // Uses dictionaries and lists to organise keyword responses.
 
     public class ResponseService
     {
+        // Logic for 2FA responses adapted from OWASP authentication guidelines (OWASP, 2023).
         // Dictionary mapping topics to lists of possible responses (for random selection)
         private readonly Dictionary<string, List<string>> _topicResponses;
 
